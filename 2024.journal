@@ -1,0 +1,13 @@
+; Declare the five top level accounts in your preferred language/capitalisation;
+; their types (to make reports like bs and is work); and their display order.
+; Write at least 2 spaces before the ; comments.
+account assets       ; type:A, money you own. 2+ spaces are required before the ;.
+account liabilities  ; type:L, money you owe to others
+account equity       ; type:E, equal to A - L (not used much in personal finance)
+account revenues     ; type:R, revenue/income categories
+account expenses     ; type:X, expense categories
+
+; Declare commodities/currencies and their decimal mark, digit grouping,
+; number of decimal places..
+commodity $1000.00
+commodity 1.000,00 EUR
