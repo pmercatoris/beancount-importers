@@ -1,0 +1,27 @@
+{
+  "include": [
+    import/importers
+  ],
+
+  "exclude": [
+  ],
+
+  "ignore": [
+  ],
+
+  "stubPath": "src/stubs",
+  "venv": "venv",
+
+  "reportMissingImports": true,
+  "reportMissingTypeStubs": false,
+
+  "venv": "venv",
+
+  "pythonPlatform": "Linux",
+
+  "executionEnvironments": [
+    {
+      "root": "src"
+    },
+  ]
+}

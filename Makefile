@@ -1,27 +1,27 @@
 # Define variables
 NPROCS = $(shell grep -c 'processor' /proc/cpuinfo)
 MAKEFLAGS += -j$(NPROCS)
-IN_DIR := import/ing/in
-CSV_DIR := import/ing/csv
-PY_SCRIPT := import/ing/xls2csv.py
+XLS_DIR := /home/pmercatoris/MyDrive/finance/documents/ing/xls
+BEAN_DIR := /home/pmercatoris/MyDrive/finance/documents/ing/beancount
+BEAN_CONFIG := importers/config.py
 
 # List all input files in the "in" directory
-IN_FILES := $(wildcard $(IN_DIR)/**/*.xls)
+XLS_FILES := $(wildcard $(XLS_DIR)/**/**/*.xls)
 
 # Convert input files to corresponding CSV files
-CSV_FILES := $(patsubst $(IN_DIR)/%.xls, $(CSV_DIR)/%.csv, $(IN_FILES))
+BEAN_FILES := $(patsubst $(XLS_DIR)/%.xls, $(BEAN_DIR)/%.beancount, $(XLS_FILES))
 
 # Target: Transform each input file to CSV
-all: $(CSV_FILES)
+all: $(BEAN_FILES)
 
-# Rule to convert each input file to CSV
-$(CSV_DIR)/%.csv: $(IN_DIR)/%.xls
+# Rule to convert each input file to beancount
+$(BEAN_DIR)/%.beancount: $(XLS_DIR)/%.xls
 	mkdir -p $(dir $@)
-	venv/bin/python $(PY_SCRIPT) -i $< -o $@
+	venv/bin/bean-extract $(BEAN_CONFIG) $< > $@
 
 # PHONY target to ensure it doesn't conflict with files named 'all' or 'clean'
 .PHONY: all clean
 
 # Clean target: Remove all generated CSV files
 clean:
-	rm -f $(CSV_FILES)
+	rm -f $(BEAN_FILES)
