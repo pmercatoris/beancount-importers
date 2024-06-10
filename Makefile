@@ -4,6 +4,7 @@ MAKEFLAGS += -j$(NPROCS)
 XLS_DIR := /home/pmercatoris/finance/documents/ing/xls
 BEAN_DIR := /home/pmercatoris/finance/documents/ing/beancount
 BEAN_CONFIG := importers/config.py
+MAIN_BEAN_FILE := /home/pmercatoris/finance/main.beancount
 
 # List all input files in the "in" directory
 XLS_FILES := $(wildcard $(XLS_DIR)/**/**/*.xls)
@@ -18,6 +19,10 @@ all: $(BEAN_FILES)
 $(BEAN_DIR)/%.beancount: $(XLS_DIR)/%.xls
 	mkdir -p $(dir $@)
 	venv/bin/bean-extract $(BEAN_CONFIG) $< > $@
+
+# fava main.beancount
+web:
+	fava $(MAIN_BEAN_FILE)
 
 # PHONY target to ensure it doesn't conflict with files named 'all' or 'clean'
 .PHONY: all clean
