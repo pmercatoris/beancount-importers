@@ -4,18 +4,12 @@
 __copyright__ = "Copyright (C) 2016  Martin Blais"
 __license__ = "GNU GPLv2"
 
-import csv
-import datetime
-import json
-import logging
 import re
 from os import path
 
 import pandas as pd
-from dateutil.parser import parse
-
-from beancount.core import account, amount, data, position
-from beancount.core.number import ZERO, D
+from beancount.core import amount, data
+from beancount.core.number import D
 from beancount.ingest import importer
 
 categories = {
