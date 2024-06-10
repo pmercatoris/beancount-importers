@@ -1,8 +1,8 @@
 # Define variables
 NPROCS = $(shell grep -c 'processor' /proc/cpuinfo)
 MAKEFLAGS += -j$(NPROCS)
-XLS_DIR := /home/pmercatoris/MyDrive/finance/documents/ing/xls
-BEAN_DIR := /home/pmercatoris/MyDrive/finance/documents/ing/beancount
+XLS_DIR := /home/pmercatoris/finance/documents/ing/xls
+BEAN_DIR := /home/pmercatoris/finance/documents/ing/beancount
 BEAN_CONFIG := importers/config.py
 
 # List all input files in the "in" directory
