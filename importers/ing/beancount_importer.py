@@ -1,8 +1,5 @@
-"""Example importer for example broker UTrade.
+"""Example importer.
 """
-
-__copyright__ = "Copyright (C) 2016  Martin Blais"
-__license__ = "GNU GPLv2"
 
 import re
 from os import path
@@ -340,18 +337,5 @@ class Importer(importer.ImporterProtocol):
             )
 
             transactions.append(transaction)
-
-        # Insert a final balance check.
-        # if index:
-        #     entries.append(
-        #         data.Balance(
-        #             meta,
-        #             date + datetime.timedelta(days=1),
-        #             self.account_cash,
-        #             amount.Amount(D(row["BALANCE"]), self.currency),
-        #             None,
-        #             None,
-        #         )
-        #     )
 
         return transactions
